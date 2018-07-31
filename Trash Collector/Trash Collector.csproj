@@ -195,6 +195,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,10 +210,26 @@
     <Compile Include="Migrations\201807300130470_UpdatdUsersTable.Designer.cs">
       <DependentUpon>201807300130470_UpdatdUsersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807301936381_AddedEmployeeCustomerModels.cs" />
+    <Compile Include="Migrations\201807301936381_AddedEmployeeCustomerModels.Designer.cs">
+      <DependentUpon>201807301936381_AddedEmployeeCustomerModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807302010085_AddedEmployeeController.cs" />
+    <Compile Include="Migrations\201807302010085_AddedEmployeeController.Designer.cs">
+      <DependentUpon>201807302010085_AddedEmployeeController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311353487_AddedCustomerController.cs" />
+    <Compile Include="Migrations\201807311353487_AddedCustomerController.Designer.cs">
+      <DependentUpon>201807311353487_AddedCustomerController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ZipCode.cs" />
+    <Compile Include="MyKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -220,6 +238,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapSpace.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -274,6 +293,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\SignUp.cshtml">
+      <BrowseToURL>~/Views/Home/SignUp.cshtml</BrowseToURL>
+    </Content>
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Home\InvalidRedirect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +330,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807300130470_UpdatdUsersTable.resx">
       <DependentUpon>201807300130470_UpdatdUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301936381_AddedEmployeeCustomerModels.resx">
+      <DependentUpon>201807301936381_AddedEmployeeCustomerModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807302010085_AddedEmployeeController.resx">
+      <DependentUpon>201807302010085_AddedEmployeeController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311353487_AddedCustomerController.resx">
+      <DependentUpon>201807311353487_AddedCustomerController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
