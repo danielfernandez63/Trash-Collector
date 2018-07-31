@@ -229,7 +229,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ZipCode.cs" />
-    <Compile Include="MyKeys.cs" />
+    <Compile Include="MyAPIKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
