@@ -20,6 +20,10 @@ namespace Trash_Collector.Models
         public string LastName { get; set; }
 
 
+        [Display(Name = "Pick Up Day")]
+        public int PickUpDay { get; set; }
+
+
 
         [ForeignKey("ZipCode")]
         [Display(Name = "Zip Code Service Area")]

@@ -38,12 +38,34 @@ namespace Trash_Collector.Controllers
             }
             
         }
+        //get
+        public ActionResult DailyPickUps(int? id)
+        {
+            if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+            {
+                var user = User.Identity.GetUserId();
+                
 
+                ViewBag.displaymenu = "Yes";
 
+                var loggedInUser = db.Employees.Where(e => e.ApplicationUserId == user).Single();
+                var localCustomers = db.Customers.Include(c => c.ZipCode).Include(b => b.PickUpDay).Where(d => d.PickUpDay.PickUpId == loggedInUser.PickUpDay && d.ZipCodeId == loggedInUser.ZipCodeId);
+                return View(localCustomers.ToList());
+            }
+            else
+            {
+                ViewBag.Name = "Not Logged In";
+                return RedirectToAction("InvalidRedirect", "Home");
+            }
+
+        }
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
+            var user = User.Identity.GetUserId();
+            
+    
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -86,15 +108,19 @@ namespace Trash_Collector.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Employee employee = db.Employees.Find(id);
+            var user = User.Identity.GetUserId();
+            var loggedInEmployee = db.Employees.Where(e => e.ApplicationUserId == user).Single();
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            Employee employee = loggedInEmployee;
             if (employee == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday",employee.PickUpDay);
             ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId", employee.ZipCodeId);
             return View(employee);
         }
@@ -104,14 +130,21 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeID,FirstName,LastName,ZipCodeId")] Employee employee)
+        public ActionResult Edit(Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                var user = User.Identity.GetUserId();
+                var loggedInEmployee = db.Employees.Where(e => e.ApplicationUserId == user).Single();
+
+                loggedInEmployee.PickUpDay = employee.PickUpDay;
+                employee.ApplicationUserId = loggedInEmployee.ApplicationUserId;
+
+                db.Entry(loggedInEmployee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("DailyPickUps");
             }
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
             ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId", employee.ZipCodeId);
             return View(employee);
         }

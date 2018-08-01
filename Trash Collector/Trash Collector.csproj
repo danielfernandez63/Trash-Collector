@@ -242,6 +242,14 @@
     <Compile Include="Migrations\201808011338449_testingkeys.Designer.cs">
       <DependentUpon>201808011338449_testingkeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808011559059_addpickupdaypropemloyeemodel.cs" />
+    <Compile Include="Migrations\201808011559059_addpickupdaypropemloyeemodel.Designer.cs">
+      <DependentUpon>201808011559059_addpickupdaypropemloyeemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808012035558_changemodelCustomer.cs" />
+    <Compile Include="Migrations\201808012035558_changemodelCustomer.Designer.cs">
+      <DependentUpon>201808012035558_changemodelCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -328,6 +336,9 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Home\InvalidRedirect.cshtml" />
+    <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Views\Employees\DailyPickUps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -375,6 +386,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808011338449_testingkeys.resx">
       <DependentUpon>201808011338449_testingkeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011559059_addpickupdaypropemloyeemodel.resx">
+      <DependentUpon>201808011559059_addpickupdaypropemloyeemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808012035558_changemodelCustomer.resx">
+      <DependentUpon>201808012035558_changemodelCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
