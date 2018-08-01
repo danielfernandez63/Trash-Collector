@@ -22,15 +22,23 @@ namespace Trash_Collector.Migrations
                new Models.ZipCode() { ZipCodeId = 5, ZipCodeArea = 53715 });
 
 
-
             context.PickUpDays.AddOrUpdate(nxt => nxt.PickUpId,
             new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Sunday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Monday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Tuesday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Wednesday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Thursday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Friday" },
-            new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Saturday" });
+            new Models.PickUpDay() { PickUpId = 2, PickUpWeekday = "Monday" },
+            new Models.PickUpDay() { PickUpId = 3, PickUpWeekday = "Tuesday" },
+            new Models.PickUpDay() { PickUpId = 4, PickUpWeekday = "Wednesday" },
+            new Models.PickUpDay() { PickUpId = 5, PickUpWeekday = "Thursday" },
+            new Models.PickUpDay() { PickUpId = 6, PickUpWeekday = "Friday" },
+            new Models.PickUpDay() { PickUpId = 7, PickUpWeekday = "Saturday" });
+
+            //context.PickUpDays.AddOrUpdate(nxt => nxt.PickUpId,
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Sunday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Monday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Tuesday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Wednesday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Thursday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Friday" },
+            //new Models.PickUpDay() { PickUpId = 1, PickUpWeekday = "Saturday" });
 
 
 

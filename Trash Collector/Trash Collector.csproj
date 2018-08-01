@@ -250,6 +250,14 @@
     <Compile Include="Migrations\201808012035558_changemodelCustomer.Designer.cs">
       <DependentUpon>201808012035558_changemodelCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808012220207_changecustomerbalanename.cs" />
+    <Compile Include="Migrations\201808012220207_changecustomerbalanename.Designer.cs">
+      <DependentUpon>201808012220207_changecustomerbalanename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808012310320_fixedPickupSeed.cs" />
+    <Compile Include="Migrations\201808012310320_fixedPickupSeed.Designer.cs">
+      <DependentUpon>201808012310320_fixedPickupSeed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -392,6 +400,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808012035558_changemodelCustomer.resx">
       <DependentUpon>201808012035558_changemodelCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808012220207_changecustomerbalanename.resx">
+      <DependentUpon>201808012220207_changecustomerbalanename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808012310320_fixedPickupSeed.resx">
+      <DependentUpon>201808012310320_fixedPickupSeed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <a href="~/Views/Shared/_LayoutCustomer.cshtml">~/Views/Shared/_LayoutCustomer.cshtml</a>
+    <a href="~/Views/Shared/_LayoutCustomer.cshtml"></a>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,9 +22,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Customer Portal", "Index", "Customers")</li>
+                    <li>@Html.ActionLink("Customer Account Portal", "Details", "Customers")</li>
                     <li>@Html.ActionLink("Employee Portal", "Index", "Employees")</li>
-                    <li>@Html.ActionLink("Services & First Pick Up", "SignUp", "Home")</li>
+                    <li>@Html.ActionLink("Services", "SignUp", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>

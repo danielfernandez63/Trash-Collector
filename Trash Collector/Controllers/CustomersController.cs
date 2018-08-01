@@ -38,16 +38,15 @@ namespace Trash_Collector.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            var user = User.Identity.GetUserId();
+
+            var loggedInUser = db.Customers.Include(g=> g.ZipCode).Include(v=> v.PickUpDay).Where(c => c.ApplicationUserId == user).Single();
+
+            if (loggedInUser == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(loggedInUser);
         }
 
         // GET: Customers/Create
@@ -89,7 +88,8 @@ namespace Trash_Collector.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId", customer.ZipCodeId);
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea", customer.ZipCodeId);
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
             return View(customer);
         }
 
@@ -98,15 +98,25 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,FirstName,LastName,StreetAddress,Balance,ZipCodeId,PickUpDate")] Customer customer)
+        public ActionResult Edit([Bind(Include = "FirstName,LastName,StreetAddress,ZipCodeId,PickUpId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                var user = User.Identity.GetUserId();
+                var loggedInCustomer = db.Customers.Where(e => e.ApplicationUserId == user).Single();
+
+                loggedInCustomer.FirstName = customer.FirstName;
+                loggedInCustomer.LastName = customer.LastName;
+                loggedInCustomer.StreetAddress = customer.StreetAddress;
+                loggedInCustomer.ZipCodeId = customer.ZipCodeId;
+                loggedInCustomer.PickUpId = customer.PickUpId;
+    
+                db.Entry(loggedInCustomer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details");
             }
-            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId", customer.ZipCodeId);
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
             return View(customer);
         }
 
