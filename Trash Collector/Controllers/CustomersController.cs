@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -23,16 +24,15 @@ namespace Trash_Collector.Controllers
                 ViewBag.Name = user.Name;
 
                 ViewBag.displaymenu = "Yes";
-
-                //var customers = db.Customers.Include(c => c.ZipCode);
-                //return View(customers.ToList());
+                return View();
+        
             }
             else
             {
                 ViewBag.Name = "Not Logged In";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("InvalidRedirect", "Home");
             }
-            return View();
+          
         }
 
         // GET: Customers/Details/5
@@ -53,7 +53,8 @@ namespace Trash_Collector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId");
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
             return View();
         }
 
@@ -62,10 +63,11 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CustomerID,FirstName,LastName,StreetAddress,Balance,ZipCodeId,PickUpDate")] Customer customer)
+        public ActionResult Create([Bind(Include = "CustomerID,FirstName,LastName,StreetAddress,Balance,ZipCodeId,PickUpId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+                customer.ApplicationUserId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");

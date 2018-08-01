@@ -6,13 +6,14 @@ using System.Web;
 
 namespace Trash_Collector.Models
 {
-    public class ZipCode
+    public class PickUpDay
     {
         [Key]
-        public int ZipCodeId { get; set; }
+        public int PickUpId { get; set; }
 
 
-        [Display(Name = "Zip Code")]
-        public int ZipCodeArea { get; set; }
+        [Display(Name = "Pickup Day of the Week")]
+        public string PickUpWeekday { get; set; }
+
     }
 }

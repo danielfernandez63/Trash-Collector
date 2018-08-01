@@ -30,18 +30,25 @@ namespace Trash_Collector.Models
         [Display(Name = "Balance")]
         public int Balance { get; set; }
 
-
-
         [ForeignKey("ZipCode")]
         [Display(Name = "Zip Code")]
         public int ZipCodeId { get; set; }
         public ZipCode ZipCode { get; set; }
 
 
-        [Display(Name = "Pick Up Day")]
-        public string PickUpDate { get; set; }
+        //[Display(Name = "Pick Up Day")]
+        //public string PickUpDate { get; set; }
 
 
+        [ForeignKey("PickUpDay")]
+        [Display(Name = "Pickup Day of the Week")]
+        public int PickUpId { get; set; }
+        public PickUpDay PickUpDay { get; set; }
+
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
     }
 }

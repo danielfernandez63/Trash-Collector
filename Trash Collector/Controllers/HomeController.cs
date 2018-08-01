@@ -13,6 +13,16 @@ namespace Trash_Collector.Controllers
             return View();
         }
 
+        public ActionResult InvalidRedirect()
+        {
+            return View();
+        }
+
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

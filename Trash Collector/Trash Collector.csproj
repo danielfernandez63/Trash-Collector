@@ -222,12 +222,33 @@
     <Compile Include="Migrations\201807311353487_AddedCustomerController.Designer.cs">
       <DependentUpon>201807311353487_AddedCustomerController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807311543426_SeededZipCodeDB.cs" />
+    <Compile Include="Migrations\201807311543426_SeededZipCodeDB.Designer.cs">
+      <DependentUpon>201807311543426_SeededZipCodeDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807312359273_updatedPickUpDayModel.cs" />
+    <Compile Include="Migrations\201807312359273_updatedPickUpDayModel.Designer.cs">
+      <DependentUpon>201807312359273_updatedPickUpDayModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011333353_testing.cs" />
+    <Compile Include="Migrations\201808011333353_testing.Designer.cs">
+      <DependentUpon>201808011333353_testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011336562_testing1.cs" />
+    <Compile Include="Migrations\201808011336562_testing1.Designer.cs">
+      <DependentUpon>201808011336562_testing1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808011338449_testingkeys.cs" />
+    <Compile Include="Migrations\201808011338449_testingkeys.Designer.cs">
+      <DependentUpon>201808011338449_testingkeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PickUpDay.cs" />
     <Compile Include="Models\ZipCode.cs" />
     <Compile Include="MyAPIKeys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -339,6 +360,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807311353487_AddedCustomerController.resx">
       <DependentUpon>201807311353487_AddedCustomerController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311543426_SeededZipCodeDB.resx">
+      <DependentUpon>201807311543426_SeededZipCodeDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807312359273_updatedPickUpDayModel.resx">
+      <DependentUpon>201807312359273_updatedPickUpDayModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011333353_testing.resx">
+      <DependentUpon>201808011333353_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011336562_testing1.resx">
+      <DependentUpon>201808011336562_testing1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808011338449_testingkeys.resx">
+      <DependentUpon>201808011338449_testingkeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

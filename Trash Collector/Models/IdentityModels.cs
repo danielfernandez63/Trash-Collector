@@ -39,5 +39,7 @@ namespace Trash_Collector.Models
         public System.Data.Entity.DbSet<Trash_Collector.Models.ZipCode> ZipCodes { get; set; }
 
         public System.Data.Entity.DbSet<Trash_Collector.Models.Customer> Customers { get; set; }
+        
+        public System.Data.Entity.DbSet<Trash_Collector.Models.PickUpDay> PickUpDays { get; set; } 
     }
 }

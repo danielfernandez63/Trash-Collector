@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Balance)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PickUpDate)
+            @Html.DisplayNameFor(model => model.PickUpDay.PickUpId)
         </th>
         <th></th>
     </tr>
@@ -50,7 +50,7 @@
             @Html.DisplayFor(modelItem => item.Balance)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PickUpDate)
+            @Html.DisplayFor(modelItem => item.PickUpDay.PickUpId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |

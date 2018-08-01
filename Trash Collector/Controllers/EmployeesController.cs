@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -16,25 +17,29 @@ namespace Trash_Collector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
             {
-                var user = User.Identity;
-                ViewBag.Name = user.Name;
-                            
-                    ViewBag.displaymenu = "Yes";
+                var user = User.Identity.GetUserId();
+                //ViewBag.Name = user.Name;
 
-                var customers = db.Customers.Include(c => c.ZipCode);
-                return View(customers.ToList());
+                ViewBag.displaymenu = "Yes";
+
+                var loggedInUser = db.Employees.Where(e => e.ApplicationUserId == user).Single();
+                var localCustomers = db.Customers.Include(c =>  c.ZipCode).Include(b=> b.PickUpDay).Where(d => d.ZipCodeId == loggedInUser.ZipCodeId);
+
+                return View(localCustomers.ToList());
             }
             else
             {
                 ViewBag.Name = "Not Logged In";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("InvalidRedirect", "Home");
             }
             
         }
+
+
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
@@ -54,8 +59,9 @@ namespace Trash_Collector.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId");
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
             return View();
+                  
         }
 
         // POST: Employees/Create
@@ -67,6 +73,7 @@ namespace Trash_Collector.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.ApplicationUserId = User.Identity.GetUserId();
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");

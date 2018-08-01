@@ -1,19 +1,22 @@
-﻿@model IEnumerable<Trash_Collector.Models.Employee>
+﻿@model IEnumerable<Trash_Collector.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Employee Home</h2>
+<br />
+<br />
+<h4>Customers List In Your Area</h4>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    @Html.ActionLink("Edit", "Employees")
+    @*@Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Edit", "Employees")*@
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ZipCode.ZipCodeId)
+            @Html.DisplayNameFor(model => model.ZipCode.ZipCodeArea)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -21,26 +24,41 @@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickUpDay.PickUpWeekday)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ZipCode.ZipCodeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode.ZipCodeArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDay.PickUpWeekday)
+            </td>
+     
+        </tr>
+    }
 
 </table>
