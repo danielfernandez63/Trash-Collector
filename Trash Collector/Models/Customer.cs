@@ -31,7 +31,7 @@ namespace Trash_Collector.Models
 
         //[DataType(DataType.Currency)]
         //[Column(TypeName = "money")]
-        [Display(Name = "Current Balance")]
+        [Display(Name = "Current Balance In Dollars")]
         public int Balance { get; set; }
 
         [ForeignKey("ZipCode")]

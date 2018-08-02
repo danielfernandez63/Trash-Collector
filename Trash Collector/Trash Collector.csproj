@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201808020002122_1.Designer.cs">
       <DependentUpon>201808020002122_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808021234210_2.cs" />
+    <Compile Include="Migrations\201808021234210_2.Designer.cs">
+      <DependentUpon>201808021234210_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -283,6 +287,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bear-break-in.jpg" />
+    <Content Include="Bear-looking-at-trash-Aspen-CO450.jpg" />
+    <Content Include="bearsfamily.jpg" />
+    <Content Include="Beartrash.jpg" />
+    <Content Include="bear_at_office.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -290,6 +299,7 @@
     <Content Include="Content\bootstrapSpace.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="funny-bears-doing-human-things-1.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -429,6 +439,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808020002122_1.resx">
       <DependentUpon>201808020002122_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808021234210_2.resx">
+      <DependentUpon>201808021234210_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
