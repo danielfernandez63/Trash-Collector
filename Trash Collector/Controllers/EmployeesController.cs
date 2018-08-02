@@ -148,6 +148,63 @@ namespace Trash_Collector.Controllers
             ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeId", employee.ZipCodeId);
             return View(employee);
         }
+        // GET: Customers/Edit/5
+        public ActionResult EditCheckOff(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea", customer.ZipCodeId);
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
+            return View(customer);
+        }
+
+        // POST: Customers/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCheckOff([Bind(Include = "CompletePickUp,CustomerId")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+              
+                var CustomerToChange = db.Customers.Where(c => c.CustomerID == customer.CustomerID).Single();
+
+                CustomerToChange.CompletePickUp = customer.CompletePickUp;
+
+
+                //db.Entry(CustomerToChange).State = EntityState.Modified;
+                //db.SaveChanges();
+                //return RedirectToAction("Details");
+
+            if(CustomerToChange.CompletePickUp == true)
+                {
+                    CustomerToChange.Balance += 25;
+                    CustomerToChange.CompletePickUp = false;
+                    db.Entry(CustomerToChange).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("DailyPickUps");
+                }
+                else
+                {
+                    ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
+                    ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
+                    return View(customer);
+                }
+            }
+            
+            ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
+            ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
+            return View(customer);
+        }
+
 
         // GET: Employees/Delete/5
         public ActionResult Delete(int? id)

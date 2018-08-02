@@ -119,6 +119,46 @@ namespace Trash_Collector.Controllers
             ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
             return View(customer);
         }
+        //// GET: Customers/Edit/5
+        //public ActionResult EditCheckOff(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Customer customer = db.Customers.Find(id);
+        //    if (customer == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea", customer.ZipCodeId);
+        //    ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
+        //    return View(customer);
+        //}
+
+        //// POST: Customers/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditCheckOff([Bind(Include = "CompletePickUp")] Customer customer)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = User.Identity.GetUserId();
+        //        var loggedInCustomer = db.Customers.Where(e => e.ApplicationUserId == user).Single();
+
+        //        loggedInCustomer.CompletePickUp = customer.CompletePickUp;
+               
+
+        //        db.Entry(loggedInCustomer).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Details");
+        //    }
+        //    ViewBag.ZipCodeId = new SelectList(db.ZipCodes, "ZipCodeId", "ZipCodeArea");
+        //    ViewBag.PickUpId = new SelectList(db.PickUpDays, "PickUpId", "PickUpWeekday");
+        //    return View(customer);
+        //}
 
         // GET: Customers/Delete/5
         public ActionResult Delete(int? id)

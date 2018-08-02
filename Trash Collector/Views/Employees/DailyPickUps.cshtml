@@ -4,14 +4,14 @@
     ViewBag.Title = "Daily Pick Ups";
 }
 
-<h2> Daily Pick Ups</h2>
+<h2> Daily Pick Ups In Area</h2>
 <br />
 <br />
-<h4>Customers Trash In Your Area For Pick Up Today!</h4>
+<h4>Customers In Your Area For Pick Up Today, please only click customer once after run. Refer to home page to see if customer has been update if needed. </h4>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")
-        @Html.ActionLink("Edit", "Employees")*@
+        Html.ActionLink("Edit", "Employees")*@
 </p>
 <table class="table">
     <tr>
@@ -27,9 +27,9 @@
         <th>
             @Html.DisplayNameFor(model => model.StreetAddress)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Balance)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PickUpDay.PickUpWeekday)
         </th>
@@ -38,27 +38,32 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZipCode.ZipCodeArea)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StreetAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PickUpDay.PickUpWeekday)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode.ZipCodeArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetAddress)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.PickUpDay.PickUpWeekday)
+        </td>
+        <td>
+            @Html.ActionLink("Check Off Route", "EditCheckOff", new { id = item.CustomerID }) 
+            @*@Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })*@
+        </td>
 
-        </tr>
+    </tr>
     }
 
 </table>

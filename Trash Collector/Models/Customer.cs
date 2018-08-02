@@ -25,6 +25,10 @@ namespace Trash_Collector.Models
         [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
+
+        [Display(Name = "Complete Pick")]
+        public bool CompletePickUp { get; set; }
+
         //[DataType(DataType.Currency)]
         //[Column(TypeName = "money")]
         [Display(Name = "Current Balance")]
